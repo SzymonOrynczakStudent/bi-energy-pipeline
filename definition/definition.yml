@@ -1,0 +1,67 @@
+# Business Intelligence System Definition
+# Domain: Canary Islands Electrical Energy Sector (ISTAC Operation C00022A)
+
+organization:
+  name: "General Directorate of Energy - Government of the Canary Islands"
+  description: "Public authority responsible for energy planning, grid supervision, and the renewable energy transition across the Canary Islands archipelago."
+  scope: "Net electricity generation by technology, final consumption by economic sector, and electrical grid balance across all 7 Canary Islands."
+
+research_questions:
+  - id: Q1
+    question: "What is the share of renewable energy (wind, solar, hydro) in the electricity generation mix of each island, and how has it evolved over the analyzed period?"
+    actor: "Director General of Ecological Transition"
+    kpi: "renewable_share_pct"
+  - id: Q2
+    question: "How is final electricity consumption distributed across economic sectors (households, hospitality, commerce, industry) across the islands?"
+    actor: "Energy Planning Lead"
+    kpi: "consumption_by_sector_mwh"
+  - id: Q3
+    question: "What is the electricity transmission and distribution loss rate between gross production and final consumption?"
+    actor: "Insular Grid Operator"
+    kpi: "grid_loss_rate_pct"
+
+objectives:
+  - id: O1
+    description: "Increase the share of renewable electricity generation across the archipelago toward 2030/2040 decarbonization targets."
+    target: "Exceed 30% renewable electricity generation across all major islands."
+  - id: O2
+    description: "Monitor electrical grid efficiency and minimize transmission and distribution losses."
+    target: "Maintain grid losses below 8% of internal energy demand."
+
+actors:
+  - id: energy_directorate
+    role: "General Directorate of Energy"
+    level: "Strategic"
+    frequency: "Monthly / Annual"
+    decisions: "Renewable capacity auction planning, grid storage investment, and insular energy policy."
+  - id: grid_planning
+    role: "Grid Planning Engineers"
+    level: "Operational / Tactical"
+    frequency: "Monthly"
+    decisions: "Substation upgrades and sectoral demand monitoring by island."
+
+kpis:
+  - id: renewable_share_pct
+    name: "Renewable Generation Share (%)"
+    definition: "Percentage of net electricity generation produced from renewable sources (wind, solar, hydro, biogas) out of total net generation."
+    formula: "(renewable_generation_mwh / total_generation_mwh) * 100"
+    unit: "%"
+    granularity: "Island and Period (Monthly / Annual)"
+    direction: "increase"
+
+  - id: total_generation_mwh
+    name: "Total Net Electricity Generation (MWh)"
+    definition: "Total net electrical energy injected into the insular grid."
+    formula: "SUM(generation_mwh)"
+    unit: "MWh"
+    granularity: "Island, Energy Source, Period"
+    direction: "informational"
+
+  - id: total_consumption_mwh
+    name: "Final Electricity Consumption (MWh)"
+    definition: "Electrical energy consumed by end-users across economic sectors."
+    formula: "SUM(consumption_mwh)"
+    unit: "MWh"
+    granularity: "Island, Economic Sector, Period"
+    direction: "informational"
+

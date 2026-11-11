@@ -1,0 +1,19 @@
+version: 2
+
+seeds:
+  - name: canary_islands
+    description: "Reference table for Canary Islands NUTS3 territory codes, provinces, and electrical grid systems."
+    columns:
+      - name: territory_code
+        data_tests: [unique, not_null]
+      - name: island_name
+        data_tests: [not_null]
+
+  - name: energy_technologies
+    description: "Catalog of electricity generation technologies classified into Renewable vs. Fossil sources."
+    columns:
+      - name: technology_code
+        data_tests: [unique, not_null]
+      - name: is_renewable
+        data_tests: [not_null]
+

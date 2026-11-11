@@ -1,0 +1,25 @@
+# Python & Virtual Environment
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+
+# Environment & Secrets
+.env
+*.user.yml
+
+# dbt Artifacts
+dbt/target/
+dbt/logs/
+dbt/dbt_packages/
+
+# Dagster Runtime & Temp Instance
+.tmp_dagster_home_*/
+orchestration/.tmp_dagster_home_*/
+.dg/
+
+# Generated Output Files
+output/
+
+# Editor / Agent State
+.gemini/

@@ -1,0 +1,72 @@
+version: 2
+
+models:
+  - name: dim_islands
+    description: "Territorial dimension for Canary Islands (NUTS3) and their electrical grid systems."
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: territory_code
+        data_type: text
+        constraints:
+          - type: not_null
+        data_tests: [unique]
+      - name: island_name
+        data_type: text
+        constraints:
+          - type: not_null
+      - name: province
+        data_type: text
+      - name: grid_system
+        data_type: text
+
+  - name: dim_technologies
+    description: "Dimension of electricity generation technologies and energy sources."
+    columns:
+      - name: technology_code
+        data_tests: [unique, not_null]
+      - name: is_renewable
+        data_tests: [not_null]
+
+  - name: fct_monthly_generation
+    description: "Fact table for monthly net electricity generation and renewable share per island. Grain: one row per month and island."
+    columns:
+      - name: generation_id
+        data_tests: [unique, not_null]
+      - name: territory_code
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_islands')
+                field: territory_code
+      - name: renewable_share_pct
+        description: "Percentage of net generation from renewable sources."
+
+  - name: fct_balance_efficiency
+    description: "Fact table for monthly electrical balance, grid losses, and efficiency. Grain: one row per month and island."
+    columns:
+      - name: balance_id
+        data_tests: [unique, not_null]
+      - name: territory_code
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_islands')
+                field: territory_code
+
+  - name: fct_annual_sector_consumption
+    description: "Fact table for annual final electricity consumption and customer count by sector. Grain: one row per year, island, and sector."
+    columns:
+      - name: sector_consumption_id
+        data_tests: [unique, not_null]
+      - name: territory_code
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_islands')
+                field: territory_code
+

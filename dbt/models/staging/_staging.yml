@@ -1,0 +1,56 @@
+version: 2
+
+models:
+  - name: stg_electricity_generation
+    description: "Monthly net electricity generation by technology and territory."
+    columns:
+      - name: period_code
+        data_tests: [not_null]
+      - name: territory_code
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('canary_islands')
+                field: territory_code
+      - name: technology_code
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('energy_technologies')
+                field: technology_code
+      - name: is_renewable
+        data_tests: [not_null]
+
+  - name: stg_sector_consumption
+    description: "Annual final electricity consumption and customer count (CUPS) by economic sector and island."
+    columns:
+      - name: year
+        data_tests: [not_null]
+      - name: territory_code
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('canary_islands')
+                field: territory_code
+
+  - name: stg_electricity_balance
+    description: "Monthly balance across gross production, internal demand, and final consumption."
+    columns:
+      - name: period_code
+        data_tests: [not_null]
+      - name: territory_code
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('canary_islands')
+                field: territory_code
+      - name: flow_code
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['ID', 'GEP', 'AFC']
+

@@ -1,0 +1,10 @@
+dbt-core==1.12.5
+dbt-postgres==1.11.0
+dagster==1.13.26
+dagster-webserver==1.13.26
+dagster-dbt==0.29.26
+dagster-dg-cli==1.13.26
+requests>=2.31.0
+pandas>=2.0.0
+SQLAlchemy>=2.0.0
+psycopg2-binary>=2.9.9

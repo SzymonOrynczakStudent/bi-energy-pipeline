@@ -1,0 +1,9 @@
+territory_code,island_name,province,grid_system
+ES70,Canary Islands,Archipelago,Interconnected
+ES703,El Hierro,Santa Cruz de Tenerife,Isolated
+ES704,Fuerteventura,Las Palmas,Interconnected FUE-LZ
+ES705,Gran Canaria,Las Palmas,Isolated
+ES706,La Gomera,Santa Cruz de Tenerife,Interconnected GOM-TEN
+ES707,La Palma,Santa Cruz de Tenerife,Isolated
+ES708,Lanzarote,Las Palmas,Interconnected FUE-LZ
+ES709,Tenerife,Santa Cruz de Tenerife,Interconnected GOM-TEN
