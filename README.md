@@ -1,7 +1,7 @@
 # ELT Pipeline: Canary Islands Energy Statistics (ISTAC C00022A)
 
 Business Intelligence project built on the Modern Data Stack:
-**Extract & Load (Python / Airbyte) $\longrightarrow$ Warehouse (PostgreSQL) $\longrightarrow$ Transform (dbt) $\longrightarrow$ Orchestration (Dagster)**.
+**Extract & Load (Python) $\longrightarrow$ Warehouse (PostgreSQL) $\longrightarrow$ Transform (dbt) $\longrightarrow$ Orchestration (Dagster)**.
 
 ---
 
