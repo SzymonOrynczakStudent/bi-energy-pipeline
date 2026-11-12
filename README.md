@@ -45,6 +45,9 @@ bi-energy-pipeline/
 │       ├── transformation.py
 │       └── reports.py
 │
+├── dashboard/                     # Interactive Streamlit BI Application
+│   └── app.py                     # Decision-support dashboard (Q1-Q3 & Executive KPIs)
+│
 └── output/
     └── canary_energy_kpis_summary.csv  # Final exported KPI summary CSV
 ```
@@ -115,6 +118,13 @@ To launch the Dagster Web UI locally on port `3000`:
 ```bash
 dg dev -h 127.0.0.1 -p 3000
 ```
+
+### Step 6: Launch Interactive Streamlit BI Dashboard
+To start the executive decision-support dashboard answering research questions Q1–Q3:
+```bash
+streamlit run dashboard/app.py
+```
+Open [http://localhost:8501](http://localhost:8501) in your browser to interact with the visual dashboard.
 
 ---
 
