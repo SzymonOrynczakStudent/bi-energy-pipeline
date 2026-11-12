@@ -553,3 +553,4 @@ with tab4:
     st.info(
         "💡 **dbt Documentation**: View interactive DAG lineage and column dictionary at `http://localhost:8080`."
     )
+
