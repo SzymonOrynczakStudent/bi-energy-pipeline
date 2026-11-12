@@ -7,6 +7,6 @@ canary_energy:
       port: "{{ env_var('POSTGRES_PORT', '5432') | as_number }}"
       user: "{{ env_var('POSTGRES_USER', 'raw_user') }}"
       password: "{{ env_var('POSTGRES_PASSWORD', 'raw_password') }}"
-      dbname: "{{ env_var('POSTGRES_DB', 'raw_db') }}"
+      dbname: "{{ env_var('DW_POSTGRES_DB', 'analytics_db') }}"
       schema: analytics
       threads: 4

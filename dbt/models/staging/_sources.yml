@@ -2,15 +2,16 @@ version: 2
 
 sources:
   - name: istac
-    description: "Official Canary Islands Electrical Energy Statistics (ISTAC Operation C00022A)"
+    description: "Official Canary Islands Electrical Energy Statistics (ISTAC Operation C00022A), replicated by Airbyte into analytics_db.raw"
     schema: raw
+    config:
+      loaded_at_field: _airbyte_extracted_at
+      freshness:
+        warn_after: {count: 24, period: hour}
+        error_after: {count: 72, period: hour}
     tables:
       - name: c00022a_000001
         description: "Final electricity consumption and customers (CUPS) by sector (2010-2019)"
-        config:
-          meta:
-            dagster:
-              asset_key: ["raw", "c00022a_000001"]
         columns:
           - name: TIME_PERIOD_CODE
             description: "Observation year"
@@ -23,10 +24,6 @@ sources:
 
       - name: c00022a_000002
         description: "Final electricity consumption and customers (CUPS) by sector (2020-present)"
-        config:
-          meta:
-            dagster:
-              asset_key: ["raw", "c00022a_000002"]
         columns:
           - name: TIME_PERIOD_CODE
           - name: TERRITORIO_CODE
@@ -35,10 +32,6 @@ sources:
 
       - name: c00022a_000004
         description: "Electrical balance: gross production, internal demand, and final consumption"
-        config:
-          meta:
-            dagster:
-              asset_key: ["raw", "c00022a_000004"]
         columns:
           - name: TIME_PERIOD_CODE
           - name: TERRITORIO_CODE
@@ -47,10 +40,6 @@ sources:
 
       - name: c00022a_000007
         description: "Net electricity generation by energy source and electrical grid system"
-        config:
-          meta:
-            dagster:
-              asset_key: ["raw", "c00022a_000007"]
         columns:
           - name: TIME_PERIOD_CODE
           - name: PRODUCTO_ENERGETICO_CODE
@@ -58,10 +47,6 @@ sources:
 
       - name: c00022a_000008
         description: "Net electricity generation by energy source per island"
-        config:
-          meta:
-            dagster:
-              asset_key: ["raw", "c00022a_000008"]
         columns:
           - name: TIME_PERIOD_CODE
           - name: TERRITORIO_CODE

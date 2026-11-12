@@ -24,7 +24,7 @@ def canary_energy_kpis_summary(context: dg.AssetExecutionContext) -> dg.Material
     password = os.getenv("POSTGRES_PASSWORD", "raw_password")
     host = os.getenv("POSTGRES_HOST", "localhost")
     port = os.getenv("POSTGRES_PORT", "5432")
-    db = os.getenv("POSTGRES_DB", "raw_db")
+    db = os.getenv("DW_POSTGRES_DB", "analytics_db")
 
     engine = create_engine(f"postgresql+psycopg2://{user}:{password}@{host}:{port}/{db}")
 
